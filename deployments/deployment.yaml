@@ -10,7 +10,7 @@ spec:
     matchLabels:
       app: myapp
       # label set on the selector and pod template should be same
-  replicas: 3
+  replicas: 6
   template:
       metadata: 
         name: nginx-2
