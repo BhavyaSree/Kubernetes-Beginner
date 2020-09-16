@@ -52,12 +52,12 @@ nav:
   - Services: 08.services.md
   - MicroServices: 09.microservices.md
   - Kubernetes on Cloud: 10.kubernetes-on-cloud.md
-  - Yaml Files:
-    - Examples:
-      - POD 1: yaml-files/pod.yaml 
-      - POD 2: yaml-files/nginx.yaml 
-      - ReplicaSet: yaml-files/replicaset.yaml
-      - Deployment: yaml-files/deployment.yaml
-      - Service : yaml-files/service-definition.yaml
+  # - Yaml Files:
+  #   - Examples:
+  #     - POD 1: yaml-files/pod
+  #     - POD 2: yaml-files/nginx
+  #     - ReplicaSet: yaml-files/replicaset
+  #     - Deployment: yaml-files/deployment
+  #     - Service : yaml-files/service-definition
   - Help:
     - Documentation: Kubernetes+For+Beginners+-+Mumshad+Mannambeth.pdf
