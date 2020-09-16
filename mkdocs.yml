@@ -41,7 +41,6 @@ repo_url: https://github.com/BhavyaSree/Kubernetes-Beginner
 edit_uri: ""
 # Page tree
 nav:
-  - Home: README.md
   - Getting started: 01.introduction.md
   - Concepts: 02.kubernetes-concepts.md
   - yaml file: 03.yaml.md 
@@ -53,11 +52,10 @@ nav:
   - MicroServices: 09.microservices.md
   - Kubernetes on Cloud: 10.kubernetes-on-cloud.md
   - Yaml Files:
-    - Examples:
-      - POD 1: yaml-files/pod.yaml 
-      - POD 2: yaml-files/nginx.yaml 
-      - ReplicaSet: yaml-files/replicaset.yaml
-      - Deployment: yaml-files/deployment.yaml
-      - Service : yaml-files/service-definition.yaml
+    - POD 1: yaml-files/pod.yaml 
+    - POD 2: yaml-files/nginx.yaml 
+    - ReplicaSet: yaml-files/replicaset.yaml
+    - Deployment: yaml-files/deployment.yaml
+    - Service : yaml-files/service-definition.yaml
   - Help:
     - Documentation: Kubernetes+For+Beginners+-+Mumshad+Mannambeth.pdf
