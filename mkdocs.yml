@@ -42,7 +42,7 @@ edit_uri: ""
 # Page tree
 nav:
   - Home: README.md
-  - Getting started: 01.Introduction.md
+  - Getting started: 01.introduction.md
   - Concepts: 02.kubernetes-concepts.md
   - yaml file: 03.yaml.md 
   - PODs with yaml: 04.pods-with-yaml.md
