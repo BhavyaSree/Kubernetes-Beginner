@@ -1,17 +1,8 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: postgres-deploy
-  labels:
-    name: postgres-deploy
-    app: demo-voting-app
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      name: postgres-pod
-      app: demo-voting-app    
-  template: 
+!!! Example "postgres-pod.yaml"
+
+    ```yaml
+    apiVersion: v1
+    kind: Pod
     metadata:
       name: postgres-pod
       labels:
@@ -30,3 +21,4 @@ spec:
               value: "postgres"
             - name: POSTGRES_PASSWORD
               value: "postgres"
+    ```

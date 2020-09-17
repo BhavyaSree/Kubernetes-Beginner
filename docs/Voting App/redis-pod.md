@@ -1,0 +1,18 @@
+!!! Example "redis-pod.yaml"
+
+    ```yaml
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: redis-pod
+      labels:
+        name: redis-pod
+        app: demo-voting-app
+    spec:
+      containers:
+        - name: redis
+          image: redis
+          ports:
+            - containerPort: 6379
+            # 6379 is the default port for redis image
+    ```       

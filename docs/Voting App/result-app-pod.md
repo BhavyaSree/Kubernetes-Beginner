@@ -1,3 +1,6 @@
+!!! Example "redis-app-pod.yaml"
+
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -11,3 +14,4 @@ spec:
       image: kodekloud/examplevotingapp_result:v1
       ports:
         - containerPort: 80
+```

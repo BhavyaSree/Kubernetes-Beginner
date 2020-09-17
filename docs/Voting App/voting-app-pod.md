@@ -1,17 +1,8 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: voting-app-deploy
-  labels:
-    name: voting-app-deploy
-    app: demo-voting-app
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      name: voting-app-pod
-      app: demo-voting-app    
-  template: 
+!!! Example "voting-app-pod.yaml"
+
+    ```yaml
+    apiVersion: v1
+    kind: Pod
     metadata:
       name: voting-app-pod
       labels:
@@ -23,3 +14,4 @@ spec:
           image: kodekloud/examplevotingapp_vote:v1
           ports:
             - containerPort: 80
+    ```

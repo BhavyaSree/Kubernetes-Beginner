@@ -40,24 +40,24 @@ repo_name: BhavyaSree/PythonClass
 repo_url: https://github.com/BhavyaSree/Kubernetes-Beginner
 edit_uri: ""
 # Page tree
-nav:
-  - Home: README.md
-  - Getting started: 01.introduction.md
-  - Concepts: 02.kubernetes-concepts.md
-  - yaml file: 03.yaml.md 
-  - PODs with yaml: 04.pods-with-yaml.md
-  - Controllers: 05.controllers.md
-  - Deployments: 06.deployments.md
-  - Networking: 07.networking.md
-  - Services: 08.services.md
-  - MicroServices: 09.microservices.md
-  - Kubernetes on Cloud: 10.kubernetes-on-cloud.md
-  # - Yaml Files:
-  #   - Examples:
-  #     - POD 1: yaml-files/pod
-  #     - POD 2: yaml-files/nginx
-  #     - ReplicaSet: yaml-files/replicaset
-  #     - Deployment: yaml-files/deployment
-  #     - Service : yaml-files/service-definition
-  - Help:
-    - Documentation: Kubernetes+For+Beginners+-+Mumshad+Mannambeth.pdf
+# nav:
+#   - Home: README.md
+#   - Getting started: 01.introduction.md
+#   - Concepts: 02.kubernetes-concepts.md
+#   - yaml file: 03.yaml.md 
+#   - PODs with yaml: 04.pods-with-yaml.md
+#   - Controllers: 05.controllers.md
+#   - Deployments: 06.deployments.md
+#   - Networking: 07.networking.md
+#   - Services: 08.services.md
+#   - MicroServices: 09.microservices.md
+#   - Kubernetes on Cloud: 10.kubernetes-on-cloud.md
+#   # - Yaml Files:
+#   #   - Examples:
+#   #     - POD 1: yaml-files/pod
+#   #     - POD 2: yaml-files/nginx
+#   #     - ReplicaSet: yaml-files/replicaset
+#   #     - Deployment: yaml-files/deployment
+#   #     - Service : yaml-files/service-definition
+#   - Help:
+#     - Documentation: Kubernetes+For+Beginners+-+Mumshad+Mannambeth.pdf
