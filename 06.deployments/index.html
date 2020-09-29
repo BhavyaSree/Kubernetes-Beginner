@@ -1,0 +1,731 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Kubernetes Beginner Tutorial">
+      
+      
+      
+        <meta name="author" content="Bhavya Sree Bindela">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.0.1">
+    
+    
+      
+        <title>Deployments - Kubernetes Beginner</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.38780c08.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f72e892.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../css/pandas-dataframe.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href=".." title="Kubernetes Beginner" class="md-header-nav__button md-logo" aria-label="Kubernetes Beginner">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Kubernetes Beginner
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Deployments
+            
+          </span>
+        </div>
+      
+    </div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/BhavyaSree/Kubernetes-Beginner" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    BhavyaSree/PythonClass
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Kubernetes Beginner" class="md-nav__button md-logo" aria-label="Kubernetes Beginner">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Kubernetes Beginner
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/BhavyaSree/Kubernetes-Beginner" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    BhavyaSree/PythonClass
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../02.kubernetes-concepts/" title="Concepts" class="md-nav__link">
+      Concepts
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../03.yaml/" title="YAML" class="md-nav__link">
+      YAML
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../04.pods-with-yaml/" title="Pods" class="md-nav__link">
+      Pods
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../05.controllers/" title="Controllers" class="md-nav__link">
+      Controllers
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+    <a href="./" title="Deployments" class="md-nav__link md-nav__link--active">
+      Deployments
+    </a>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../07.networking/" title="Networking" class="md-nav__link">
+      Networking
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../08.services/" title="Services" class="md-nav__link">
+      Services
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../09.microservices/" title="Micro Services" class="md-nav__link">
+      Micro Services
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../10.kubernetes-on-cloud/" title="Kubernetes on cloud" class="md-nav__link">
+      Kubernetes on cloud
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11">
+    
+    <label class="md-nav__link" for="nav-11">
+      Help
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Help" data-md-level="1">
+      <label class="md-nav__title" for="nav-11">
+        <span class="md-nav__icon md-icon"></span>
+        Help
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Help/User-Guide/" title="User Guide" class="md-nav__link">
+      User Guide
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12">
+    
+    <label class="md-nav__link" for="nav-12">
+      Voting App
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Voting App" data-md-level="1">
+      <label class="md-nav__title" for="nav-12">
+        <span class="md-nav__icon md-icon"></span>
+        Voting App
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Voting%20App/postgres-deploy/" title="Postgres deploy" class="md-nav__link">
+      Postgres deploy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Voting%20App/postgres-pod/" title="Postgres pod" class="md-nav__link">
+      Postgres pod
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Voting%20App/postgres-service/" title="Postgres service" class="md-nav__link">
+      Postgres service
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Voting%20App/redis-deploy/" title="Redis deploy" class="md-nav__link">
+      Redis deploy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Voting%20App/redis-pod/" title="Redis pod" class="md-nav__link">
+      Redis pod
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Voting%20App/redis-service/" title="Redis service" class="md-nav__link">
+      Redis service
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Voting%20App/result-app-deploy/" title="Result app deploy" class="md-nav__link">
+      Result app deploy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Voting%20App/result-app-pod/" title="Result app pod" class="md-nav__link">
+      Result app pod
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Voting%20App/result-app-service/" title="Result app service" class="md-nav__link">
+      Result app service
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Voting%20App/voting-app-deploy/" title="Voting app deploy" class="md-nav__link">
+      Voting app deploy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Voting%20App/voting-app-pod/" title="Voting app pod" class="md-nav__link">
+      Voting app pod
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Voting%20App/voting-app-service/" title="Voting app service" class="md-nav__link">
+      Voting app service
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Voting%20App/worker-app-deploy/" title="Worker app deploy" class="md-nav__link">
+      Worker app deploy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Voting%20App/worker-app-pod/" title="Worker app pod" class="md-nav__link">
+      Worker app pod
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-13" type="checkbox" id="nav-13">
+    
+    <label class="md-nav__link" for="nav-13">
+      Yaml files
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Yaml files" data-md-level="1">
+      <label class="md-nav__title" for="nav-13">
+        <span class="md-nav__icon md-icon"></span>
+        Yaml files
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../yaml-files/deployment/" title="Deployment" class="md-nav__link">
+      Deployment
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../yaml-files/nginx/" title="Nginx" class="md-nav__link">
+      Nginx
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../yaml-files/pod/" title="Pod" class="md-nav__link">
+      Pod
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../yaml-files/replicaset/" title="Replicaset" class="md-nav__link">
+      Replicaset
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../yaml-files/service-definition/" title="Service definition" class="md-nav__link">
+      Service definition
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Deployments</h1>
+                
+                <p>PODs deploy single instance of our application.
+Each container is encapuslated in the POD.<br />
+Multiple such PODs are deployed using replication controllers or replicasets.<br />
+Deployment is the kubernetes object that comes higher in the hierarchy. 
+Deployment provides us with the capability to upgrade the underlying instances seemlessly using rolling updates, undo changes, pause and resume changes as required.  </p>
+<p>To create a deployment we first create a deployment definition yaml file.
+The contents of deployment definition file will be similar to the replicaset definition file, except the kind, which will be deployment.  </p>
+<p><code>kubectl create -f &lt;deployment definition file&gt;</code><br />
+To create the deployment.  </p>
+<p><code>kubectl get deployments</code><br />
+To view the created deployments. 
+The deployment automatically creates replicaset. </p>
+<p><code>kubectl describe deployment &lt;deploymnet name&gt;</code><br />
+To get more information about the particular deployment.</p>
+<p><code>kubectl get replicasets</code><br />
+To view the available replicasets.<br />
+Here, we can see a new replicaset in the name of the deployment.<br />
+replicaset ultimately create pods.  </p>
+<p><code>kubectl get pods</code><br />
+We can able to see the pods in the name of the deployment and the replicaset.  </p>
+<p><code>kubectl get all</code><br />
+To view all the objects created in the kuberntes cluster.</p>
+<h2>Update and Rollback</h2>
+<h3>Rollout and Versioning</h3>
+<p>When we first create a deployment, it triggers a rollout. A new rollout creates a new deployment revision, lets call it revision 1.<br />
+In future when the application is upgraded i.e., when the container version is updated to a new one, a new rollout is triggered and a new deployment revision is created named revision 2.<br />
+This helps us to keep track of changes made to our deployment and enables us to rollback to previous versions of deployment if necessary.  </p>
+<p><code>kubectl rollout status &lt;deployment name&gt;</code> <br />
+To view the status of our rollout</p>
+<p><code>kubectl rollout history &lt;deployment name&gt;</code> <br />
+To view the revisions and history of deployment.  </p>
+<h3>Deployment Strategies</h3>
+<p>There are two types of deployment strategies.</p>
+<p>For example:
+we have 5 replicas of web application instance deployed.<br />
+One way to upgrade these to newer version is to destroy all of these instances and then create newer versions of application instances.<br />
+First destroy the 5 running instances and then deploy 5 new instances of new application version. The problem with this is during the period after the older versions are down and newer versions are up, the application is down and inaccessible to users. <br />
+This strategy is called <code>Recreate strategy</code>.  </p>
+<p>The second strategy is where we don't destroy all of the instances at once, instead we take down the older version and bring up the newer version one by one. This way the application never goes down and the upgrade is seamless. This strategy is called <code>Rolling Update strategy</code>.<br />
+If we do not specify a strategy while creating deployment, it will assume it to be rolling update.<br />
+Rolling Update is the default deployment strategy.  </p>
+<h3>kubectl apply</h3>
+<p>Updating the deployment could be different things like updating the application version by updating the version of docker containers used, updating the labels or updating the number of replicas etc,.
+As we have depolyment definition file, it will be easy for us to modify this file.  </p>
+<p>Once we make necessary changes to the file run <code>kubectl apply -f &lt;deployment definition file&gt;</code> to apply changes. A new rollout is triggered and a new revision of the deployment is created.  </p>
+<p>Other way to update the image version of application is <br />
+<code>kubectl set image &lt;deployment name&gt; &lt;oldimage=newimage&gt;</code> <br />
+<code>kubectl set image deployment/myapp-deployment nginx=nginx:1.9.1</code><br />
+In this way, definition file will have old image version and we need to be extra careful when we use this definition file to make changes in the future.   </p>
+<h3>Upgrades (how deployment performs upgrade)</h3>
+<p>When a new deployment is created to deploy 5 replicas,it first creates a replicaset automatically which inturn creates the number of PODs required to meet the number of replicas.<br />
+When we upgrade our application, the kubernetes deployment object creates a new replicaset and starts deploying the containers there. At the same taking down the pods in the old replicaset following a rolling update strategy.</p>
+<p>When we upgrade our application, we can see old replicaset with 0 pods and new replicaset with 5 replicas using the following command.<br />
+<code>kubectl get replicasets</code>  </p>
+<h3>Rollback</h3>
+<p>For an instance, after we upgrade our application, we realise that there is something wrong with newer version of build we used to upgrade and so we would like to rollback the upgrade.<br />
+Kubernetes deployments allow to rollback to a previous revision.  <br />
+To undo a change <code>kubectl rollout undo &lt;deployment name&gt;</code> <br />
+The deployment then destroy the pods in the new replicaset and bring the older ones up in the older replicaset and the application is back to its older format.  </p>
+<h3>Kubectl run</h3>
+<p>We use <code>kubectl run</code> command to create a POD.<br />
+<code>kubectl run nginx --image=nginx</code><br />
+This command creates a deployment, not just a POD.<br />
+This is one more way of creating deployments without having definition file. The required replicaset and PODs are created automatically in the backend.<br />
+Using the definition file is recommended, as we can save the file, check it into the code repository and modify later as required.  </p>
+<h2>Summarize Commands</h2>
+<h4>Create</h4>
+<p><code>kubectl create -f &lt;deployment definition file&gt;</code>  </p>
+<h4>Get</h4>
+<p><code>kubectl get deployments</code>  </p>
+<h4>Update</h4>
+<p><code>kubectl apply -f &lt;deployment definition file&gt;</code><br />
+<code>kubectl set image &lt;deployment name&gt; &lt;oldimage=newiamge&gt;</code>  </p>
+<h4>Status</h4>
+<p><code>kubectl rollout status &lt;deployment name&gt;</code><br />
+<code>kubectl rollout history &lt;deployment name&gt;</code> <br />
+<code>kubectl rollout undo &lt;deployment name&gt;</code>    </p>
+<h4>Scale</h4>
+<p>To scale up the deployment<br />
+<code>kubectl scale deployment &lt;deployment name&gt; --replicas=3</code>   </p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.77e55a48.min.js"></script>
+      <script src="../assets/javascripts/bundle.aa3f9871.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: ['tabs'],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="../javascripts/extra.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
